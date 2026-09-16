@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
+              $table->enum('type', ['private', 'group'])->default('private');
+            # group only
+            $table->string('title')->nullable();
+            $table->string('image')->nullable();
+            $table->foreignId('last_message_id')->nullable();
+            $table->timestamp('last_message_at')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('members')->nullOnDelete();
             $table->timestamps();
         });
     }
