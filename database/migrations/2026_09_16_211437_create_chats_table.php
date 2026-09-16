@@ -29,7 +29,7 @@ return new class extends Migration
              $table->boolean('is_edited')->default(false);
              $table->timestamp('edited_at')->nullable();
             $table->timestamp('deleted_for_everyone_at')->nullable();
-            $table->foreignId('sender_id')->references('id')->on('members'); 
+            $table->foreignId('sender_id')->references('id')->on('users'); 
             $table->longText('message');
             $table->timestamps();
         });
