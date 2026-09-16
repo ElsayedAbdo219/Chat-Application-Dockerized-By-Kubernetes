@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+      if(!Schema::hasTable('conversations')) {
         Schema::create('conversations', function (Blueprint $table) {
             $table->id();
               $table->enum('type', ['private', 'group'])->default('private');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });
+      }
     }
 
     /**
