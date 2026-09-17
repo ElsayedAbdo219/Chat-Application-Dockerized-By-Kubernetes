@@ -41,6 +41,14 @@ services:
     networks:
       - laravel
 
+  redis:
+    image: redis:alpine
+    container_name: laravel_redis
+    restart: unless-stopped
+    networks:
+      - laravel
+
+
 networks:
   laravel:
     driver: bridge
